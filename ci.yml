@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "add-cicd-pipeline" ]
 jobs:
-build:
+  build:
     name: Build Docker image
     runs-on: ubuntu-latest
     steps:
