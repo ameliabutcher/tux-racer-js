@@ -5,11 +5,29 @@ on:
   push:
     branches: [ "add-cicd-pipeline" ]
 jobs:
-  hello:
+build:
+    name: Build Docker image
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Say hello
-        run: echo "GitHub Actions is working!"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          tags: wordguesser-ci:latest
+          load: true
+
+      - name: Save image as artifact
+        run: docker save wordguesser-ci:latest -o image.tar
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-image
+          path: image.tar
