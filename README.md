@@ -136,6 +136,7 @@ Contributions are welcome! Feel free to submit issues, feature requests, or pull
 
 ### TuxRacer.js Development
 - Developed by Jan Ebbe
+- CI/CD Pipeline added by Amelia Butcher (2025)
 
 ---
 
