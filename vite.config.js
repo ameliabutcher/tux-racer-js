@@ -3,4 +3,7 @@ export default {
   build: {
     target: "esnext",
   },
+  server: {
+    port: 9292,
+  },
 };
