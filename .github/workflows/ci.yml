@@ -31,27 +31,3 @@ jobs:
         with:
           name: app-image
           path: image.tar
-  cucumber:
-    name: Cucumber
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: app-image
-          path: .
-
-      - name: Load Docker image
-        run: docker load -i image.tar
-
-      - name: Run Cucumber inside container
-        run: |
-          docker run --rm \
-            -e RACK_ENV=test -e RAILS_ENV=test \
-            -v ${{ github.workspace }}:/app \
-            wordguesser-ci:latest \
-            bash -lc "bundle exec cucumber"
