@@ -9,6 +9,7 @@ export default {
   },
   preview: {
     port: 9292,
-    host: "0.0.0.0"
+    host: "0.0.0.0",
+    allowedHosts: "all"
   }
 };
