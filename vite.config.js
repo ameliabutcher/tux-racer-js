@@ -5,6 +5,6 @@ export default {
   },
   server: {
     port: 9292,
-    allowedHosts: "tux-racer-js.onrender.com"
+    allowedHosts: "all"
   },
 };
