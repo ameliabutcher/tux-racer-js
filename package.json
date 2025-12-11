@@ -7,6 +7,7 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "serve": "node -e \"require('http').createServer((req, res) => { const fs = require('fs'); const path = require('path'); const filePath = path.join(__dirname, 'dist', req.url === '/' ? 'index.html' : req.url); if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) { res.writeHead(200); res.end(fs.readFileSync(filePath)); } else { res.writeHead(200); res.end(fs.readFileSync(path.join(__dirname, 'dist', 'index.html'))); } }).listen(9292);\"",
     "test": "vitest",
     "format": "prettier --write .",
     "lint": "eslint --fix ./src",
