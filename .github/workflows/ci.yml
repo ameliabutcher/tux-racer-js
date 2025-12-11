@@ -20,12 +20,11 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          tags: wordguesser-ci:latest
+          tags: tux-racer-js-ci:latest
           load: true
 
       - name: Save image as artifact
-        run: docker save wordguesser-ci:latest -o image.tar
-
+        run: docker save tux-racer-js-ci:latest -o image.tar
       - name: Upload image artifact
         uses: actions/upload-artifact@v4
         with:
