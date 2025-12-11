@@ -111,12 +111,11 @@ jobs:
           tux-racer-js-ci:latest \
           npm run cucumber
           
-
- deploy:
+  deploy:
     name: Deploy to Render
     needs: [eslint, hadolint, trufflehog, trivy, cucumber]
     runs-on: ubuntu-latest
-    f: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
       - name: Trigger Render Deploy Hook
         env:
