@@ -70,4 +70,4 @@ USER node
 EXPOSE 9292
 
 # Run the application.
-CMD npm run dev
+CMD ["npm", "run", "dev"]
